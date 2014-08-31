@@ -37,3 +37,9 @@ describe file('/etc/udev/rules.d/99-pt3.rules') do
   it {should be_owned_by 'root'}
   it {should be_grouped_into 'root'}
 end
+
+describe file('/usr/local/bin/recpt1') do
+  it {should be_file}
+  it {should be_mode 755}
+  it {should be_owned_by 'root'}
+end

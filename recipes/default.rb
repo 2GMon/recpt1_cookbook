@@ -69,3 +69,21 @@ bash "install-pt3_drv" do
     make && make install
   EOC
 end
+
+bash "install-recpt1" do
+  not_if "ls /usr/local/bin/recpt1"
+  user "root"
+  code <<-"EOC"
+    cd /tmp
+    if [ ! -e #{node['recpt1']['rev']}.tar.bz2 ]; then
+      wget http://hg.honeyplanet.jp/pt1/archive/#{node['recpt1']['rev']}.tar.bz2
+    fi
+    if [ -e #{node['recpt1']['rev']} ]; then
+      rm -fr #{node['recpt1']['rev']}
+    fi
+    tar xjvf #{node['recpt1']['rev']}.tar.bz2 && cd pt1-#{node['recpt1']['rev']}/recpt1
+    ./autogen.sh
+    ./configure --enable-b25
+    make && make install
+  EOC
+end
