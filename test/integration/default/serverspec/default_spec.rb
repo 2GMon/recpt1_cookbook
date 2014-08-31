@@ -30,3 +30,10 @@ describe file('/etc/modprobe.d/pt1-blacklist.conf') do
   it {should be_owned_by 'root'}
   it {should be_grouped_into 'root'}
 end
+
+describe file('/etc/udev/rules.d/99-pt3.rules') do
+  it {should be_file}
+  it {should be_mode 644}
+  it {should be_owned_by 'root'}
+  it {should be_grouped_into 'root'}
+end

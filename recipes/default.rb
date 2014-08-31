@@ -53,3 +53,19 @@ cookbook_file "/etc/modprobe.d/pt1-blacklist.conf" do
   group "root"
   mode 0644
 end
+
+git "/tmp/pt3_drv" do
+  repository "https://github.com/m-tsudo/pt3"
+  action :sync
+  user "root"
+  group "root"
+end
+
+bash "install-pt3_drv" do
+  not_if "ls /etc/udev/rules.d/99-pt3.rules"
+  user "root"
+  code <<-"EOC"
+    cd /tmp/pt3_drv
+    make && make install
+  EOC
+end
