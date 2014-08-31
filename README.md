@@ -21,8 +21,20 @@ Attributes
   <tr>
     <td><tt>['recpt1']['kernel_version']</tt></td>
     <td>String</td>
-    <td>`uname -r`</td>
+    <td>You must modify to `uname -r`.</td>
     <td><tt>3.2.0-4-amd64</tt></td>
+  </tr>
+  <tr>
+    <td><tt>['arib25']['rev']</tt></td>
+    <td>String</td>
+    <td>arib branch revision</td>
+    <td><tt>ec7c87854f2f</tt></td>
+  </tr>
+  <tr>
+    <td><tt>['recpt1']['rev']</tt></td>
+    <td>String</td>
+    <td>recpt1 latest branch revision</td>
+    <td><tt>c8688d7d6382</tt></td>
   </tr>
 </table>
 
