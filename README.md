@@ -4,7 +4,6 @@ This cookbook set up recpt1.
 
 Requirements
 ------------
-
 #### platforms
 - `Debian` - This cookbook is tested with only debian-7.6.
 
@@ -19,7 +18,7 @@ Attributes
     <th>Default</th>
   </tr>
   <tr>
-    <td><tt>['recpt1']['kernel_version']</tt></td>
+    <td><tt>['arib25']['kernel_version']</tt></td>
     <td>String</td>
     <td>You must modify to `uname -r`.</td>
     <td><tt>3.2.0-4-amd64</tt></td>
@@ -41,7 +40,7 @@ Attributes
 Usage
 -----
 #### recpt1::default
-Just include `recpt1` in your node's `run_list`:
+include `recpt1` in your node's `run_list`:
 
 ```json
 {
@@ -50,6 +49,14 @@ Just include `recpt1` in your node's `run_list`:
     "recipe[recpt1]"
   ]
 }
+```
+
+and change `attributes['arib25']['kernel_version']` to your kernel_version.
+
+#### run test
+```
+bundle install
+bundle exec kitchen test
 ```
 
 Contributing

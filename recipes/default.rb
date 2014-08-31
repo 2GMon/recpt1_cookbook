@@ -24,9 +24,32 @@ bash "install-arib25" do
     cd /tmp
     wget http://hg.honeyplanet.jp/pt1/archive/#{node['arib25']['rev']}.tar.bz2
     if [ -e #{node['arib25']['rev']} ]; then
-      rm #{node['arib25']['rev']}
+      rm -fr #{node['arib25']['rev']}
     fi
     tar xjvf #{node['arib25']['rev']}.tar.bz2 && cd pt1-#{node['arib25']['rev']}/arib25
     make && make install
   EOC
+end
+
+bash "install-pt1_drv" do
+  not_if "ls /etc/udev/rules.d/99-pt1.rules"
+  user "root"
+  code <<-"EOC"
+    cd /tmp
+    if [ ! -e #{node['recpt1']['rev']}.tar.bz2 ]; then
+      wget http://hg.honeyplanet.jp/pt1/archive/#{node['recpt1']['rev']}.tar.bz2
+    fi
+    if [ -e #{node['recpt1']['rev']} ]; then
+      rm -fr #{node['recpt1']['rev']}
+    fi
+    tar xjvf #{node['recpt1']['rev']}.tar.bz2 && cd pt1-#{node['recpt1']['rev']}/driver
+    make && make install
+  EOC
+end
+
+cookbook_file "/etc/modprobe.d/pt1-blacklist.conf" do
+  source "pt1-blacklist.conf"
+  owner "root"
+  group "root"
+  mode 0644
 end
