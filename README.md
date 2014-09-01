@@ -18,12 +18,6 @@ Attributes
     <th>Default</th>
   </tr>
   <tr>
-    <td><tt>['arib25']['kernel_version']</tt></td>
-    <td>String</td>
-    <td>You must modify to `uname -r`.</td>
-    <td><tt>3.2.0-4-amd64</tt></td>
-  </tr>
-  <tr>
     <td><tt>['arib25']['rev']</tt></td>
     <td>String</td>
     <td>arib branch revision</td>
@@ -50,8 +44,6 @@ include `recpt1` in your node's `run_list`:
   ]
 }
 ```
-
-and change `attributes['arib25']['kernel_version']` to your kernel_version.
 
 #### run test
 ```

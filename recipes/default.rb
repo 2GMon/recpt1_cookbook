@@ -13,7 +13,7 @@
   end
 end
 
-package "linux-headers-#{node['arib25']['kernel_version']}" do
+package "linux-headers-#{node['kernel']['release']}" do
   action :install
 end
 
