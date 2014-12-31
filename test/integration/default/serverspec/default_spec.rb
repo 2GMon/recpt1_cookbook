@@ -1,6 +1,6 @@
 require 'serverspec'
-include Serverspec::Helper::Exec
-include Serverspec::Helper::DetectOS
+
+set :background, :exec
 
 %w!autoconf make gcc g++ pkg-config git wget libpcsclite-dev!.each do |pkg|
   describe package(pkg) do

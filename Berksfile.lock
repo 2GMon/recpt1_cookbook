@@ -1,0 +1,9 @@
+DEPENDENCIES
+  apt
+  recpt1
+    path: .
+    metadata: true
+
+GRAPH
+  apt (2.6.1)
+  recpt1 (0.1.0)
